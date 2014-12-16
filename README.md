@@ -1,4 +1,5 @@
-rest-oauth2-sample (X)
+rest-oauth2-sample
 ==================
 
-rest-oauth2-sample
+### Presentation Slides
+http://www.slideshare.net/rcandidosilva/javaone-2014-securing-restful-resources-with-oauth2
