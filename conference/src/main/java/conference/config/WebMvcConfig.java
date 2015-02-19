@@ -1,16 +1,12 @@
 package conference.config;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
+import conference.oauth.AccessConfirmationController;
+import conference.oauth.AdminController;
 import conference.oauth.UserApprovalHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.http.MediaType;
-import conference.oauth.AccessConfirmationController;
-import conference.oauth.AdminController;
 import org.springframework.security.oauth2.provider.ClientDetailsService;
 import org.springframework.security.oauth2.provider.approval.ApprovalStore;
 import org.springframework.security.oauth2.provider.token.ConsumerTokenServices;
@@ -25,16 +21,18 @@ import org.springframework.web.servlet.view.ContentNegotiatingViewResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
+import java.util.Arrays;
+
 @Configuration
 @EnableWebMvc
 public class WebMvcConfig extends WebMvcConfigurerAdapter {
 
-	@Bean
-	public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
-		return new PropertySourcesPlaceholderConfigurer();
-	}
+    @Bean
+    public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
+        return new PropertySourcesPlaceholderConfigurer();
+    }
 
-   @Bean
+    @Bean
     public ContentNegotiatingViewResolver contentViewResolver() throws Exception {
         ContentNegotiationManagerFactoryBean contentNegotiationManager = new ContentNegotiationManagerFactoryBean();
         contentNegotiationManager.addMediaType("json", MediaType.APPLICATION_JSON);
@@ -62,15 +60,15 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
     }
 
 
-	@Bean
-	public AdminController adminController(TokenStore tokenStore, ConsumerTokenServices tokenServices,
-			UserApprovalHandler userApprovalHandler) {
-		AdminController adminController = new AdminController();
-		adminController.setTokenStore(tokenStore);
-		adminController.setTokenServices(tokenServices);
-		adminController.setUserApprovalHandler(userApprovalHandler);
-		return adminController;
-	}
+    @Bean
+    public AdminController adminController(TokenStore tokenStore, ConsumerTokenServices tokenServices,
+                                           UserApprovalHandler userApprovalHandler) {
+        AdminController adminController = new AdminController();
+        adminController.setTokenStore(tokenStore);
+        adminController.setTokenServices(tokenServices);
+        adminController.setUserApprovalHandler(userApprovalHandler);
+        return adminController;
+    }
 
     @Override
     public void configureDefaultServletHandling(

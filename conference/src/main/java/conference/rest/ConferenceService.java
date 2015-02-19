@@ -86,21 +86,18 @@ public class ConferenceService {
         if (speakers == null) {
             //mock all the conference speakers data
             speakers = new ArrayList<Speaker>();
-            speakers.add(new Speaker(1l, "Rodrigo Silva", "Software Architect",
-                    "https://oracleus.activeevents.com/published/oracleus2014/files/15133/Profile.jpg",
+            speakers.add(new Speaker(1l, "Reza Rahman", "Java Evangelist",
+                    "http://confoo.ca/images/speakers/2015/reza-rahman.jpg",
+                    "http://twitter.com/reza_rahman", null, "Oracle"));
+            speakers.add(new Speaker(2l, "Hanneli Tavante", "Senior Software Developer",
+                    "http://confoo.ca/images/speakers/2015/hanneli-tavante.jpg",
+                    "http://twitter.com/hannelita", null, "CodeMiner 42"));
+            speakers.add(new Speaker(3l, "Rodrigo Cândido da Silva", "Software Architect",
+                    "http://confoo.ca/images/speakers/2015/rodrigo-candido-da-silva.jpg",
                     "http://twitter.com/rcandidosilva", null, "Integritas"));
-            speakers.add(new Speaker(2l, "George Gastaldi", "Senior Software Engineer",
-                    "https://oracleus.activeevents.com/published/oracleus2014/files/13315/me.jpeg",
-                    null, null, "Red Hat, Inc."));
-            speakers.add(new Speaker(3l, "Michel Graciano", "Software Architect",
-                    "https://oracleus.activeevents.com/published/oracleus2014/files/13547/IMG_20120908_170401.jpg",
-                    null, null, "Betha"));
-            speakers.add(new Speaker(4l, "Bruno Borges", "Principal Product Manager",
-                    "https://oracleus.activeevents.com/published/oracleus2014/files/8594/profile_facebook.jpg",
-                    null, null, "Oracle"));
-            speakers.add(new Speaker(5l, "Leonardo Zanivan", "Software Architect",
-                    "https://oracleus.activeevents.com/published/oracleus2014/files/13168/foto.png",
-                    null, null, "Trier"));
+            speakers.add(new Speaker(4l, "Eduardo Shiota", "Senior Front-end Developer",
+                    "http://confoo.ca/images/speakers/2015/eduardo-shiota-yasuda.jpg",
+                    "http://twitter.com/shiota", null, "Booking.com"));
         }
     }
 
@@ -108,10 +105,10 @@ public class ConferenceService {
         if (sessions == null) {
             //mock all the conference sessions data
             sessions = new ArrayList<Session>();
-            sessions.add(new Session("CON4990", "Securing RESTful Resources with OAuth2", null));
-            sessions.add(new Session("CON2122", "Tweet for Beer! Beer Tap Powered by Java Goes Internet of Things and JavaFX", null));
-            sessions.add(new Session("BOF2695", "Fast-Developing CRUD-like Applications with Java EE 7", null));
-            sessions.add(new Session("CON6423", "Scalable JavaScript Applications with Project Nashorn", null));
+            sessions.add(new Session("CONFOO01", "JMS.Next(): JMS 2 and Beyond", null));
+            sessions.add(new Session("CONFOO02", "Java EE 8 - Future, Wishes and Predictions", null));
+            sessions.add(new Session("CONFOO03", "Supporting Multi-Tenancy Applications with Java EE", null));
+            sessions.add(new Session("CONFOO04", "Modular JavaScript Heaven with AMD and Events", null));
 
         }
     }

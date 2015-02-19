@@ -19,7 +19,9 @@ public class Speaker implements Serializable {
         super();
     }
 
-    public Speaker(Long id, String name, String title, String photoUri, String twitter, String bio, String company) {
+    public Speaker(Long id, String name, String title,
+                   String photoUri, String twitter,
+                   String bio, String company) {
         this.id = id;
         this.name = name;
         this.title = title;

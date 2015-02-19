@@ -25,7 +25,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/webjars/**", "/images/**", "/oauth/uncache_approvals", "/oauth/cache_approvals");
+        web.ignoring().antMatchers("/webjars/**", "/images/**",
+                "/oauth/uncache_approvals", "/oauth/cache_approvals");
     }
 
     @Override
@@ -36,8 +37,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
-            .authorizeRequests().antMatchers("/login.jsp").permitAll().and()
+        http.authorizeRequests().antMatchers("/login.jsp").permitAll().and()
             .authorizeRequests()
                 .anyRequest().hasRole("USER")
                 .and()
@@ -45,16 +45,17 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .accessDeniedPage("/login.jsp?authorization_error=true")
                 .and()
             .csrf()
-                .requireCsrfProtectionMatcher(new AntPathRequestMatcher("/oauth/authorize")).disable()
+                .requireCsrfProtectionMatcher(
+                        new AntPathRequestMatcher("/oauth/authorize")).disable()
             .logout()
                 .logoutSuccessUrl("/index.jsp")
                 .logoutUrl("/logout.do")
                 .and()
             .formLogin()
-                    .usernameParameter("j_username")
-                    .passwordParameter("j_password")
-                    .failureUrl("/login.jsp?authentication_error=true")
-                    .loginPage("/login.jsp")
-                    .loginProcessingUrl("/login.do");
+                .usernameParameter("j_username")
+                .passwordParameter("j_password")
+                .failureUrl("/login.jsp?authentication_error=true")
+                .loginPage("/login.jsp")
+                .loginProcessingUrl("/login.do");
     }
 }

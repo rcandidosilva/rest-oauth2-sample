@@ -14,7 +14,8 @@ public class Session {
         super();
     }
 
-    public Session(String id, String title, String description) {
+    public Session(String id, String title,
+                   String description) {
         this.id = id;
         this.title = title;
         this.description = description;
