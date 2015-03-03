@@ -61,11 +61,11 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
 
 
     @Bean
-    public AdminController adminController(TokenStore tokenStore, ConsumerTokenServices tokenServices,
+    public AdminController adminController(TokenStore tokenStore, ConsumerTokenServices consumerTokenServices,
                                            UserApprovalHandler userApprovalHandler) {
         AdminController adminController = new AdminController();
         adminController.setTokenStore(tokenStore);
-        adminController.setTokenServices(tokenServices);
+        adminController.setTokenServices(consumerTokenServices);
         adminController.setUserApprovalHandler(userApprovalHandler);
         return adminController;
     }
