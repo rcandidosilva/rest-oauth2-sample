@@ -28,7 +28,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     private UserApprovalHandler userApprovalHandler;
 
     @Autowired
-    @Qualifier("authenticationManagerBean")
+    @Qualifier("authenticationManagerPrincipal")
     private AuthenticationManager authenticationManager;
 
     @Value("${redirect:http://localhost:8080/client/conference/redirect}")
@@ -42,7 +42,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
             .authorities("ROLE_CLIENT")
             .scopes("read", "write")
             .secret("secret")
-        .and()
+                .and()
             .withClient("client-with-redirect")
             .resourceIds(RESOURCE_ID)
             .authorizedGrantTypes("authorization_code", "implicit")
@@ -50,13 +50,19 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
             .scopes("read", "write")
             .secret("secret")
             .redirectUris(redirectUri)
-        .and()
+                .and()
             .withClient("my-client-with-registered-redirect")
             .resourceIds(RESOURCE_ID)
             .authorizedGrantTypes("authorization_code", "client_credentials")
             .authorities("ROLE_CLIENT")
             .scopes("read", "trust")
-            .redirectUris("http://anywhere?key=value");
+                .and()
+            .withClient("client2")
+            .secret("secret")
+            .resourceIds(RESOURCE_ID)
+            .authorizedGrantTypes("client_credentials")
+            .authorities("ROLE_CLIENT")
+            .scopes("read", "write");
     }
 
     @Bean

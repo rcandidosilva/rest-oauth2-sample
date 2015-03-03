@@ -1,5 +1,7 @@
 package conference.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -14,6 +16,10 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
+    @Autowired
+    @Qualifier("authenticationManagerPrincipal")
+    private AuthenticationManager authenticationManager;
+    
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth
@@ -25,14 +31,19 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/webjars/**", "/images/**",
+        web.ignoring().antMatchers("/webjars/**", "/images/**", "/oauth/token",
                 "/oauth/uncache_approvals", "/oauth/cache_approvals");
     }
 
     @Override
-    @Bean
+    @Bean(name = "authenticationManagerPrincipal")
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
+    }
+
+    @Override
+    protected AuthenticationManager authenticationManager() throws Exception {
+        return authenticationManager;
     }
 
     @Override
