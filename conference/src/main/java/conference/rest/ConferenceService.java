@@ -33,6 +33,7 @@ public class ConferenceService {
     @GET
     @Path("/speakers")
     @Produces(MediaType.APPLICATION_XML)
+    @PreAuthorize("#oauth2.hasScope('test')")
     public List<Speaker> getSpeakers() {
         return speakers;
     }
