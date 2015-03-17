@@ -15,23 +15,23 @@ import org.springframework.security.oauth2.provider.approval.UserApprovalHandler
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.InMemoryTokenStore;
 
-@Configuration
-@EnableAuthorizationServer
+//@Configuration
+//@EnableAuthorizationServer
 public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
 
     private static final String RESOURCE_ID = "conference";
 
-    @Autowired
+    //@Autowired
     private TokenStore tokenStore;
 
-    @Autowired
+    //@Autowired
     private UserApprovalHandler userApprovalHandler;
 
-    @Autowired
-    @Qualifier("authenticationManagerPrincipal")
+    //@Autowired
+    //@Qualifier("authenticationManagerPrincipal")
     private AuthenticationManager authenticationManager;
 
-    @Value("${redirect:http://localhost:8080/client/conference/redirect}")
+    //@Value("${redirect:http://localhost:8080/client/conference/redirect}")
     private String redirectUri;
 
     @Override
@@ -65,7 +65,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
             .scopes("read", "write");
     }
 
-    @Bean
+    //@Bean
     public TokenStore tokenStore() {
         return new InMemoryTokenStore();
     }

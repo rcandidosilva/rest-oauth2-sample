@@ -14,7 +14,7 @@
 <script type="text/javascript"
 	src="webjars/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 
-<authz:authorize ifAllGranted="ROLE_USER">
+<authz:authorize ifAllGranted="USER">
 	<script type='text/javascript'>
 		function pictureDisplay(json) {
 			for (var i = 0; i < json.photos.length; i++) {
@@ -32,11 +32,9 @@
 
 		<h1>Conference Server</h1>
 
-		<authz:authorize ifAllGranted="ROLE_USER">
+		<authz:authorize ifAllGranted="USER">
 			<div class="form-horizontal">
-				<form action="<c:url value="/logout.do"/>" role="form">
-					<button class="btn btn-primary" type="submit">Logout</button>
-				</form>
+				<a href="${pageContext.request.contextPath}/j_spring_security_logout"> Logout</a>
 			</div>
 		</authz:authorize>
 
