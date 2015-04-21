@@ -12,18 +12,18 @@ import org.springframework.security.oauth2.provider.approval.TokenApprovalStore;
 import org.springframework.security.oauth2.provider.request.DefaultOAuth2RequestFactory;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 
-@Configuration
+//@Configuration
 public class OAuth2ServerConfig {
 
-    @Autowired
+    //@Autowired
     private ClientDetailsService clientDetailsService;
 
-    @Autowired
+    //@Autowired
     private TokenStore tokenStore;
 
 
-    @Configuration
-    @Order(10)
+    //@Configuration
+    //@Order(10)
     protected static class UiResourceConfiguration
             extends WebSecurityConfigurerAdapter {
         @Override
@@ -37,16 +37,16 @@ public class OAuth2ServerConfig {
     }
 
 
-    @Bean
+    //@Bean
     public ApprovalStore approvalStore() throws Exception {
         TokenApprovalStore store = new TokenApprovalStore();
         store.setTokenStore(tokenStore);
         return store;
     }
 
-    @Bean
-    @Lazy
-    @Scope(proxyMode = ScopedProxyMode.TARGET_CLASS)
+    //@Bean
+    //@Lazy
+    //@Scope(proxyMode = ScopedProxyMode.TARGET_CLASS)
     public UserApprovalHandler userApprovalHandler() throws Exception {
         UserApprovalHandler handler = new UserApprovalHandler();
         handler.setApprovalStore(approvalStore());

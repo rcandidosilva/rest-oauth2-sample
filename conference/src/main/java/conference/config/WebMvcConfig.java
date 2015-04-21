@@ -2,13 +2,13 @@ package conference.config;
 
 import conference.oauth.AccessConfirmationController;
 import conference.oauth.AdminController;
-import conference.oauth.UserApprovalHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.http.MediaType;
 import org.springframework.security.oauth2.provider.ClientDetailsService;
-import org.springframework.security.oauth2.provider.approval.ApprovalStore;
+import org.springframework.security.oauth2.provider.approval.TokenApprovalStore;
+import org.springframework.security.oauth2.provider.approval.UserApprovalHandler;
 import org.springframework.security.oauth2.provider.token.ConsumerTokenServices;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.web.accept.ContentNegotiationManagerFactoryBean;
@@ -52,7 +52,7 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
     }
 
     @Bean
-    public AccessConfirmationController accessConfirmationController(ClientDetailsService clientDetailsService, ApprovalStore approvalStore) {
+    public AccessConfirmationController accessConfirmationController(ClientDetailsService clientDetailsService, TokenApprovalStore approvalStore) {
         AccessConfirmationController accessConfirmationController = new AccessConfirmationController();
         accessConfirmationController.setClientDetailsService(clientDetailsService);
         accessConfirmationController.setApprovalStore(approvalStore);
